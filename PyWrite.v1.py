@@ -3,10 +3,8 @@ from tkinter import *
 import tkinter.filedialog as fd
 import tkinter.messagebox as mb
 from PIL import Image, ImageTk
-import os, customtkinter
-from PyWrite_FileManagerv1 import *
+import os
 
-file_state = False # refers to whether the file is saved or not
 
 def open_file():
     file = fd.askopenfilename(defaultextension=".txt",
@@ -20,14 +18,9 @@ def open_file():
     else:
         file = None
 
-    global file_state
-    file_state = True
-
 def new():
     root.title("Untitled - Pywrite")
     text.delete(1.0, END)
-    global file_state
-    file_state = False
 
 def save():
     global text
@@ -37,8 +30,6 @@ def save():
     file.write(txt)
     file.close()
     root.title(os.path.basename(saveloc))
-    global file_state
-    file_state = True
 
 def close_app():
     root.destroy()
